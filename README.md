@@ -46,6 +46,7 @@ Tune and document the following hyperparameters:
 | Lindah   | 5e-5          | 0.995 | 128   | 1.0           | 0.05        | 0.2           | 8          | 100,000         | 200,000     | 5000           | Added gradient clipping (max_grad_norm=10) |             |
 | Sam      | 5e-4          | 0.95  | 64    | 1.0           | 0.01        | 0.1           | 4          | 100,000         | 500,000     | 1000           | Increased learning rate and buffer size and improved    | 554.26      |
 | Josiane  | 1e-4          | 0.99  | 128   | 1.0           | 0.05        | 0.2           | 8          | 100,000         | 200,000     | 5000           | Improved performance                    | 722         |
+| Miracle   | 1e-4          | 0.99  | 64    | 1.0           | 0.02        | 0.2           | 4          | 100,000            | 200,000     | 1000           | Larger batch, buffer, more exploration, longer learning_starts, n_stack=4 |             |
 
 > Fill in the table above as you experiment with different hyperparameter sets.
 
