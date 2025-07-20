@@ -62,11 +62,6 @@ Tune and document the following hyperparameters:
 python train.py
 ```
 
-**To view training progress in TensorBoard:**
-```bash
-tensorboard --logdir ./logs/
-```
-
 ### Playing
 ```bash
 python play.py
@@ -79,6 +74,3 @@ python play.py
 - The `models/` directory will contain your trained models.
 - For best results, experiment with both `MLPPolicy` and `CnnPolicy` and document your findings.
 
-## References
-- [Stable Baselines3 Documentation](https://stable-baselines3.readthedocs.io/)
-- [Gymnasium Atari Environments](https://gymnasium.farama.org/environments/atari/)

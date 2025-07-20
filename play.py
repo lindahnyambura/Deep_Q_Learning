@@ -10,7 +10,7 @@ import ale_py
 
 # Configuration for evaluation
 CONFIG = {
-    "MODEL_PATH": "models/dqn_Assault-v5_CnnPolicy1_final.zip",  # Path to the trained model
+    "MODEL_PATH": "models/best_model.zip",  # Path to the trained model
     "ENV_ID": "ALE/Assault-v5",  # Atari environment ID
     "NUM_EPISODES": 5,  # Number of episodes to evaluate
     "FRAME_STACK": 4,  # Number of frames to stack (must match training)
