@@ -10,6 +10,7 @@ This project demonstrates training and evaluating a Deep Q-Network (DQN) agent u
 - `train.py`: Script to train a DQN agent and save its policy network.
 - `play.py`: Script to load the trained model and play the game using the agent.
 - `models/`: Directory where trained models are saved.
+- `eval_videos/`: Directory where evaluation videos and gifs are saved.
 
 ## Requirements
 - Python 3.7+
@@ -43,10 +44,18 @@ Tune and document the following hyperparameters:
 |----------|---------------|-------|-------|---------------|-------------|---------------|------------|-----------------|-------------|----------------|-----------------------------------------|-------------|
 | Baseline | 1e-4          | 0.99  | 64    | 1.0           | 0.01        | 0.1           | 4          | 100,000         | 100,000     | 1000           |                                         |             |
 | Lindah   | 5e-5          | 0.995 | 128   | 1.0           | 0.05        | 0.2           | 8          | 100,000         | 200,000     | 5000           | Added gradient clipping (max_grad_norm=10) |             |
-| Sam      | 5e-4          | 0.95  | 64    | 1.0           | 0.01        | 0.1           | 4          | 100,000         | 100,000     | 1000           | Increased learning rate and improved    | 545.26      |
+| Sam      | 5e-4          | 0.95  | 64    | 1.0           | 0.01        | 0.1           | 4          | 100,000         | 500,000     | 1000           | Increased learning rate and bugger size and improved    | 554.26      |
 | Josiane  | 1e-4          | 0.99  | 128   | 1.0           | 0.05        | 0.2           | 8          | 100,000         | 200,000     | 5000           | Improved performance                    | 722         |
 
 > Fill in the table above as you experiment with different hyperparameter sets.
+
+### Comparison of MlpPolicy and CnnPolicy for Assault-v5
+
+- **Performance Superiority**: CnnPolicy consistently achieves higher final mean episode rewards than MlpPolicy across all experiments, demonstrating its effectiveness in the Assault-v5 environment.
+- **Architectural Advantage**: The convolutional architecture of CnnPolicy excels at extracting spatial features from the game's visual input, making it well-suited for Atari-like tasks.
+- **MlpPolicy Limitations**: MlpPolicy, based on a multi-layer perceptron, struggles to process raw pixel data, leading to lower performance compared to CnnPolicy.
+- **Hyperparameter Impact**: Experiments varying learning rate, exploration duration, replay buffer size, and gamma show CnnPolicy's robustness, with the largest replay buffer yielding the best results for both policies.
+- **Optimization Preference**: CnnPolicy benefits more from hyperparameter tuning, particularly with a larger replay buffer and higher learning rate, making it the preferred choice for optimizing performance in Assault-v5.
 
 ## 2. Playing with the Agent (`play.py`)
 
@@ -68,6 +77,12 @@ python play.py
 ```
 
 **Evaluation videos** are saved in the `./eval_videos/` directory. 
+
+## Example Evaluation (GIF)
+
+Below is an example of the agent playing the Atari environment:
+
+![Evaluation Example](eval_videos/eval-episode.gif)
 
 ## Notes
 - Ensure the environment name is consistent in both scripts.
