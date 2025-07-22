@@ -48,7 +48,6 @@ Tune and document the following hyperparameters:
 | Josiane  | 1e-4          | 0.99  | 128   | 1.0           | 0.05        | 0.2           | 8          | 100,000         | 200,000     | 5000           | Improved performance                    | 722         |
 | Miracle   | 1e-4          | 0.99  | 64    | 1.0           | 0.02        | 0.2           | 4          | 100,000            | 200,000     | 1000           | Larger batch, buffer, more exploration, longer learning_starts, n_stack=4 |    2.90         |
 
-> Fill in the table above as you experiment with different hyperparameter sets.
 
 ### Comparison of MlpPolicy and CnnPolicy for Assault-v5
 
