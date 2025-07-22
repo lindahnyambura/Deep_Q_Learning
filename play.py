@@ -1,5 +1,3 @@
-
-
 import gymnasium as gym
 import numpy as np
 from stable_baselines3 import DQN
@@ -116,60 +114,3 @@ if __name__ == "__main__":
     print("\n=== Evaluation Complete ===")
     print("Download videos with:")
     print("eval_videos.zip created in the current directory.")
-
-print(env.observation_space.shape)  # Should be (4,84,84)
-
-def verify_env():
-    # Create raw environment
-    raw_env = gym.make(CONFIG["ENV_ID"], render_mode="rgb_array")
-    print("Raw Environment:")
-    print(f"Action space: {raw_env.action_space}")
-    print(f"Observation space: {raw_env.observation_space.shape}")
-
-    # Create processed env
-    env = create_env()
-    print("\nProcessed Environment:")
-    print(f"Action space: {env.action_space}")
-    print(f"Observation space: {env.observation_space.shape}")
-
-    # Test stepping
-    obs = env.reset()
-    print("\nFirst observation stats:")
-    print(f"Shape: {obs.shape}")
-    print(f"Min: {obs.min()}, Max: {obs.max()}, Mean: {obs.mean():.3f}")
-
-    return env
-
-env = verify_env()
-
-def test_model(model):
-    dummy_input = np.random.rand(1, 4, 84, 84).astype(np.float32)
-    print("\nModel test:")
-    print(f"Input shape: {dummy_input.shape}")
-
-    for _ in range(3):
-        action, _ = model.predict(dummy_input)
-        print(f"Predicted action: {action}")
-
-    # Check first layer weights
-    first_conv = model.policy.q_net.features_extractor.cnn[0]
-    print(f"\nFirst layer weights: {first_conv.weight.shape}")
-    print(f"Bias: {first_conv.bias.shape}")
-
-test_model(model)
-
-def inspect_model():
-    model = DQN.load(CONFIG["MODEL_PATH"])
-    print("\nModel Architecture:")
-    print(model.policy)
-
-    # Check input dimensions
-    print("\nPolicy kwargs:")
-    print(model.policy_kwargs)
-
-    # Sample prediction
-    dummy_obs = np.zeros((1, 84, 84, 4))
-    action, _ = model.predict(dummy_obs)
-    print(f"\nDummy prediction: {action}")
-
-inspect_model()
